@@ -104,6 +104,7 @@
     "react-dom": "^16.8.6",
     "react-dropzone": "^10.1.5",
     "react-redux": "^7.1.1",
+    "react-use": "^14.2.0",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
     "simple-plist": "^1.1.0",
