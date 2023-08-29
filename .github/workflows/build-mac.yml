@@ -3,7 +3,7 @@ name: Build Mac
 on:  
   push:  
     branches:  
-      - sc  
+      - debugtron/sc  
   
 jobs:  
   build:  
