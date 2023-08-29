@@ -2,7 +2,7 @@ name: test
 on:
   push:
     branches:  
-      - debugtron/sc  
+      - sc  
   pull_request:
 jobs:
   build:
