@@ -18,7 +18,7 @@ import './app.css'
 export const App: React.FC = () => {
   const [activeId, setActiveId] = useState('')
   const { appInfo, sessionInfo, appLoading } = useSelector<State, State>(
-    (s) => s
+    (s) => s,
   )
   const { getRootProps, getInputProps } = useDropzone({
     noClick: process.platform === 'darwin',
@@ -193,12 +193,12 @@ export const App: React.FC = () => {
                                       page.devtoolsFrontendUrl
                                         .replace(
                                           /^\/devtools/,
-                                          'devtools://devtools/bundled'
+                                          'devtools://devtools/bundled',
                                         )
                                         .replace(
                                           /^chrome-devtools:\/\//,
-                                          'devtools://'
-                                        )
+                                          'devtools://',
+                                        ),
                                     )
                                   }}
                                 >

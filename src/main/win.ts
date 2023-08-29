@@ -19,21 +19,21 @@ export class WinAdapter extends Adapter {
     const items = [
       ...this.enumRegeditItems(
         HKEY.HKEY_LOCAL_MACHINE,
-        'Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall'
+        'Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall',
       ),
       ...this.enumRegeditItems(
         HKEY.HKEY_LOCAL_MACHINE,
-        'Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall'
+        'Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall',
       ),
       ...this.enumRegeditItems(
         HKEY.HKEY_CURRENT_USER,
-        'Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall'
+        'Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall',
       ),
     ]
     return Promise.all(
       items.map((itemValues) =>
-        this.getAppInfoFromRegeditItemValues(itemValues)
-      )
+        this.getAppInfoFromRegeditItemValues(itemValues),
+      ),
     )
   }
 
@@ -50,18 +50,18 @@ export class WinAdapter extends Adapter {
 
   private enumRegeditItems(key: HKEY, subkey: string) {
     return enumerateKeys(key, subkey).map((k) =>
-      enumerateValues(key, subkey + '\\' + k)
+      enumerateValues(key, subkey + '\\' + k),
     )
   }
 
   private async getAppInfoByExePath(
     exePath: string,
     iconPath: string,
-    values: readonly RegistryValue[]
+    values: readonly RegistryValue[],
   ): Promise<AppInfo> {
     const displayName = values.find(
       (v): v is RegistryStringEntry =>
-        v && v.type === RegistryValueType.REG_SZ && v.name === 'DisplayName'
+        v && v.type === RegistryValueType.REG_SZ && v.name === 'DisplayName',
     )
     let icon = ''
     if (iconPath) {
@@ -80,7 +80,7 @@ export class WinAdapter extends Adapter {
     return (
       fs.existsSync(path.join(installDir, 'resources')) &&
       ['electron.asar', 'app.asar', 'app.asar.unpacked'].some((file) =>
-        fs.existsSync(path.join(installDir, 'resources', file))
+        fs.existsSync(path.join(installDir, 'resources', file)),
       )
     )
   }
@@ -100,7 +100,7 @@ export class WinAdapter extends Adapter {
   }
 
   private async getAppInfoFromRegeditItemValues(
-    values: readonly RegistryValue[]
+    values: readonly RegistryValue[],
   ): Promise<AppInfo | undefined> {
     if (values.length === 0) return
 
@@ -109,7 +109,7 @@ export class WinAdapter extends Adapter {
     // Try to find executable path of Electron app
     const displayIcon = values.find(
       (v): v is RegistryStringEntry =>
-        v && v.type === RegistryValueType.REG_SZ && v.name === 'DisplayIcon'
+        v && v.type === RegistryValueType.REG_SZ && v.name === 'DisplayIcon',
     )
 
     if (displayIcon) {
@@ -126,7 +126,9 @@ export class WinAdapter extends Adapter {
 
     const installLocation = values.find(
       (v): v is RegistryStringEntry =>
-        v && v.type === RegistryValueType.REG_SZ && v.name === 'InstallLocation'
+        v &&
+        v.type === RegistryValueType.REG_SZ &&
+        v.name === 'InstallLocation',
     )
 
     if (installLocation && installLocation.data) {

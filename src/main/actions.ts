@@ -22,12 +22,12 @@ export const fetchPages =
 
       const payloads = await Promise.allSettled<PageInfo>(
         ports.map((port) =>
-          fetch(`http://127.0.0.1:${port}/json`).then((res) => res.json())
-        ) as any
+          fetch(`http://127.0.0.1:${port}/json`).then((res) => res.json()),
+        ) as any,
       )
 
       const pages = payloads.flatMap((p) =>
-        p.status === 'fulfilled' ? p.value : []
+        p.status === 'fulfilled' ? p.value : [],
       )
       if (pages.length === 0) return
 
@@ -53,7 +53,7 @@ export const startDebugging =
       [`--inspect-brk=${nodePort}`, `--remote-debugging-port=${windowPort}`],
       {
         cwd: process.platform === 'win32' ? path.dirname(app.exePath) : '/',
-      }
+      },
     )
 
     const id = v4()

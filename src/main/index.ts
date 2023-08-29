@@ -22,7 +22,7 @@ import { setUpdater, setReporter } from './utils'
 
 const store = createStore<State, any, {}, {}>(
   reducers,
-  composeWithStateSync(applyMiddleware(thunk))
+  composeWithStateSync(applyMiddleware(thunk)),
 )
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -116,12 +116,12 @@ if (!gotTheLock) {
               label: 'Submit an Issue',
               click() {
                 shell.openExternal(
-                  'https://github.com/bytedance/debugtron/issues/new'
+                  'https://github.com/bytedance/debugtron/issues/new',
                 )
               },
             },
           ],
-        })
+        }),
       )
     }
 
@@ -162,10 +162,10 @@ if (!gotTheLock) {
       } else {
         dialog.showErrorBox(
           'Invalid application path',
-          `${p} is not an Electron-based application`
+          `${p} is not an Electron-based application`,
         )
       }
-    }
+    },
   )
 
   ipcMain.on('startDebugging', async (e: Electron.Event, id: string) => {

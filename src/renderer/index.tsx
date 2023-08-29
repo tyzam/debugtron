@@ -12,11 +12,11 @@ import thunk from 'redux-thunk'
 
 const store = createStore(
   reducers,
-  composeWithStateSync(applyMiddleware(thunk))
+  composeWithStateSync(applyMiddleware(thunk)),
 )
 
 createRoot(document.getElementById('root')!).render(
   <Provider store={store}>
     <App />
-  </Provider>
+  </Provider>,
 )
