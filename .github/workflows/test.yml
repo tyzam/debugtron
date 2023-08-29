@@ -1,12 +1,15 @@
 name: test
 on:
   push:
+    branches:  
+      - debugtron/sc  
   pull_request:
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       - uses: pnpm/action-setup@v2.2.1
       - run: pnpm install
+      - run: pnpm package
       - run: pnpm lint
