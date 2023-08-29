@@ -50,7 +50,7 @@ export const startDebugging =
 
     const sp = spawn(
       app.exePath,
-      [`--inspect=${nodePort}`, `--remote-debugging-port=${windowPort}`],
+      [`--inspect-brk=${nodePort}`, `--remote-debugging-port=${windowPort}`],
       {
         cwd: process.platform === 'win32' ? path.dirname(app.exePath) : '/',
       }
