@@ -16,6 +16,8 @@ jobs:
         run: npm install  
       - name: Build the project  
         run: npm run build -- --platform=macOS --arch=x64  
+      - name: Package  
+        run: npm run package  
       - name: Upload the build artifacts  
         uses: actions/upload-artifact@v2  
         with:  
