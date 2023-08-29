@@ -1,0 +1,23 @@
+name: Build Mac  
+  
+on:  
+  push:  
+    branches:  
+      - sc  
+  
+jobs:  
+  build:  
+    runs-on: macos-latest  
+    steps:  
+      - uses: actions/checkout@v2  
+      - name: Set up Xcode  
+        uses: apple-platform/actions/setup-xcode@v1.0.0  
+      - name: Install dependencies  
+        run: npm install  
+      - name: Build the project  
+        run: npm run build -- --platform=macOS --arch=x64  
+      - name: Upload the build artifacts  
+        uses: actions/upload-artifact@v2  
+        with:  
+          name: built-app  
+          path: ./out/sc_debugtron.app 
