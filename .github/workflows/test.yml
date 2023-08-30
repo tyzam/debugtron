@@ -18,5 +18,5 @@ jobs:
       - name: Upload the build artifacts  
         uses: actions/upload-artifact@v3.1.2  
         with:  
-          path: /Users/runner/work/debugtron/out/Debugtron.app
+          path: /Users/runner/work/debugtron/debugtron/out/Debugtron-darwin-x64/Debugtron.app
       - run: pnpm lint
