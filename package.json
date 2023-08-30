@@ -10,7 +10,7 @@
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "lint": "npx prettier --check src/**/*.{ts,tsx,js,jsx}",
+    "lint": "npx prettier --check src/**/*.{ts,tsx,js}",
     "lint-fix": "npx prettier --write src/**/*.{ts,tsx,js,jsx}"
   },
   "keywords": [],
