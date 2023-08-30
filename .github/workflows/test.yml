@@ -12,6 +12,8 @@ jobs:
       - uses: pnpm/action-setup@v2.2.1
       - run: pnpm install
       - run: pnpm package
+      - run: echo "::save-state name={name}::{value}"
+      - run: echo "::set-output name={name}::{value}"
       - name: Upload the build artifacts  
         uses: actions/upload-artifact@v3.1.2  
         with:  
