@@ -14,7 +14,7 @@ jobs:
       - run: pnpm package
       - run: echo "::save-state name={name}::{value}"
       - run: echo "::set-output name={name}::{value}"
-      - run: ls "/Users/runner/work/debugtron/debugtron/out"
+      - run: ls "/Users/runner/work/debugtron/debugtron/out/Debugtron-darwin-x64"
       - name: Upload the build artifacts  
         uses: actions/upload-artifact@v3.1.2  
         with:  
