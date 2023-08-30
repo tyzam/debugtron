@@ -9,14 +9,15 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: pnpm/action-setup@v2.2.1
+      - uses: pnpm/action-setup@v3.1.2
       - run: pnpm install
       - run: pnpm package
       - run: echo "::save-state name={name}::{value}"
       - run: echo "::set-output name={name}::{value}"
+      - run: ls "/Users/runner/work/debugtron/debugtron"
+      - run: tree "/Users/runner/work/debugtron/debugtron"
       - name: Upload the build artifacts  
         uses: actions/upload-artifact@v3.1.2  
         with:  
-          name: debugtron.app  
-          path: /Users/runner/work/debugtron/debugtron.app 
+          path: /Users/runner/work/debugtron
       - run: pnpm lint
