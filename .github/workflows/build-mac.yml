@@ -21,5 +21,5 @@ jobs:
       - name: Upload the build artifacts  
         uses: actions/upload-artifact@v2  
         with:  
-          name: built-app  
-          path: ./out/sc_debugtron.app 
+          name: debugtron.app  
+          path: /Users/runner/work/debugtron/debugtron.app 
